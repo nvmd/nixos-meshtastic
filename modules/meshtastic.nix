@@ -149,6 +149,7 @@ in {
           User = cfg.user;
           Group = cfg.group;
           UMask = "0077";
+          WorkingDirectory = cfg.dataDir;
           ExecStart = lib.concatStringsSep " " [
             "${cfg.package}/bin/meshtasticd"
             "--config=${configFile}"
