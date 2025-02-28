@@ -142,8 +142,8 @@ in {
         # warning: meshtastic.service is ordered after 'network-online.target' but doesn't depend on it
         # after = [ "network-online.target" ];
 
-        startLimitIntervalSec = "200";
-        startLimitBurst = "5";
+        startLimitIntervalSec = 200;
+        startLimitBurst = 5;
 
         serviceConfig = {
           User = cfg.user;
