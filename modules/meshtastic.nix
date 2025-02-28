@@ -82,8 +82,9 @@ in {
       '';
       description = ''
         Configuration for Meshtastic native daemon (meshtasticd), see
-        <https://meshtastic.org/docs/hardware/devices/linux-native-hardware/#configuration> 
-        and <https://github.com/meshtastic/firmware/blob/master/bin/config-dist.yaml> 
+        <https://meshtastic.org/docs/hardware/devices/linux-native-hardware/#configuration>, 
+        <https://github.com/meshtastic/firmware/blob/master/bin/config-dist.yaml>, and 
+        <https://github.com/meshtastic/firmware/tree/master/bin/config.d>
         for details.
 
         The Nix value declared here will be translated directly to the YAML 
