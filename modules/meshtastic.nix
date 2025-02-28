@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, self, ...}:
 
 with lib;
 
@@ -14,7 +14,7 @@ in {
   options.services.meshtastic = {
     enable = mkEnableOption "Meshtastic native daemon";
 
-    package = mkPackageOption pkgs "meshtasticd" {};
+    package = mkPackageOption self.packages.${pkgs.hostPlatform.system} "meshtasticd" {};
 
     user = mkOption {
       type = types.str;
