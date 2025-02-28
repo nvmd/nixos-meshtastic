@@ -151,7 +151,7 @@ in {
           UMask = "0077";
           WorkingDirectory = cfg.dataDir;
           ExecStart = lib.concatStringsSep " " [
-            "${cfg.package}/bin/meshtasticd"
+            (lib.getExe cfg.package)
             "--config=${configFile}"
             "--fsdir=${cfg.dataDir}"
             "--port=${toString cfg.apiPort}"

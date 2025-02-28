@@ -76,6 +76,7 @@ in stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/meshtastic/firmware";
     changelog = "https://github.com/meshtastic/firmware/releases/tag/v${finalAttrs.version}";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
+    mainProgram = "meshtasticd";
     license = licenses.gpl3Only;
     platforms = [ "x86_64-linux" "aarch64-linux" "armv7l-linux" ];
     maintainers = with maintainers; [ kazenyuk ];
