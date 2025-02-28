@@ -48,6 +48,18 @@ in {
       '';
     };
 
+    enableAutodiscovery = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        Enable auto-discovery with avahi-daemon.
+        This will allow the Android client to auto-discover this Linux Native device.
+
+        This option doesn't imply `openFirewall = true`, you need to enable it 
+        explicitly to make the instance not only auto-discoverable, but also accessible.
+      '';
+    };
+
     apiPort = lib.mkOption {
       type = lib.types.port;
       default = 4403;
@@ -183,6 +195,18 @@ in {
     networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall ([
       cfg.apiPort
     ] ++ lib.optional (cfg.config.Webserver ? Port) cfg.config.Webserver.Port);
+
+    services.avahi.extraServiceFiles.meshtasticd = lib.mkIf cfg.enableAutodiscovery ''
+      <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+      <service-group>
+        <name>Meshtastic</name>
+        <service protocol="ipv4">
+          <type>_meshtastic._tcp</type>
+          <port>${cfg.apiPort}</port>
+        </service>
+      </service-group>
+    '';
 
   };
 
