@@ -4,7 +4,7 @@ with lib;
 
 let
   cfg = config.services.meshtastic;
-  st = meshtasticCfg.settings;
+  st = cfg.settings;
 in {
 
   config = mkIf cfg.enable {
