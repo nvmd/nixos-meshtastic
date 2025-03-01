@@ -24,7 +24,9 @@
     });
 
     nixosModules = {
-      default = import ./modules/meshtastic.nix { inherit self; };
+      default = { config, lib, pkgs, ... }@args: import ./modules/meshtastic.nix {
+        inherit config lib pkgs self;
+      };
 
       # Tries to automagically configure SPI and I2C on Raspberry Pi
       # with `config.txt`
